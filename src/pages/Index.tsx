@@ -6,19 +6,28 @@ const IMG_COW       = "https://cdn.poehali.dev/projects/5f76888b-15da-428a-92be-
 const IMG_PRODUCTS  = "https://cdn.poehali.dev/projects/5f76888b-15da-428a-92be-3ece21533d69/files/70ccfc64-e958-417d-b35f-9f79bff39310.jpg";
 const LOGO_IMG      = "https://kumk.ru/wp-content/uploads/2021/02/logo-kumk-official.png";
 
-/* ─── Данные ─── */
+/* ─── Данные с kumk.ru ─── */
+const BASE = "https://kumk.ru/wp-content/uploads";
 const products = [
-  { id:1, name:"Молоко цельное",    type:"Молоко",  price:89,  shelf:7,  fat:"3,2%", emoji:"🥛", badge:"Хит",      desc:"Пастеризованное, с горных лугов. Живой вкус без обработки." },
-  { id:2, name:"Кефир классический",type:"Кефир",   price:79,  shelf:14, fat:"2,5%", emoji:"🫙", badge:null,       desc:"На живых заквасках. Мягкий, нежный, для всей семьи." },
-  { id:3, name:"Сметана 20%",       type:"Сметана", price:149, shelf:21, fat:"20%",  emoji:"🥄", badge:"Новинка",  desc:"Густая, домашняя. Ложка стоит — значит, настоящая." },
-  { id:4, name:"Творог зернистый",  type:"Творог",  price:199, shelf:10, fat:"5%",   emoji:"🧀", badge:null,       desc:"Рассыпчатый, без крахмала. Белок без компромиссов." },
-  { id:5, name:"Масло сливочное",   type:"Масло",   price:249, shelf:30, fat:"82,5%",emoji:"🧈", badge:"Фермерское",desc:"82,5% жира. Только сливки, ничего лишнего." },
-  { id:6, name:"Молоко топлёное",   type:"Молоко",  price:109, shelf:5,  fat:"4%",   emoji:"☕", badge:null,       desc:"Томлёное 8 часов. Карамельный аромат горного вечера." },
-  { id:7, name:"Ряженка",           type:"Кефир",   price:89,  shelf:10, fat:"3,2%", emoji:"🫗", badge:null,       desc:"Из топлёного молока. Бабушкин рецепт, без изменений." },
-  { id:8, name:"Сметана 30%",       type:"Сметана", price:179, shelf:21, fat:"30%",  emoji:"🥄", badge:null,       desc:"Жирная, насыщенная. Для настоящего дагестанского борща." },
+  { id:1,  name:"Молоко 2,5% 1000 г",                         type:"Молоко",  fat:"2,5%", shelf:7,  badge:"Хит",        img:`${BASE}/2025/12/IMG_5433-300x300.jpg`,  desc:"Пастеризованное молоко из натурального сырья. Мягкий вкус, идеально для всей семьи." },
+  { id:2,  name:"Молоко 3,2% 1000 г",                         type:"Молоко",  fat:"3,2%", shelf:7,  badge:null,         img:`${BASE}/2025/12/IMG_5433-300x300.jpg`,  desc:"Классическое цельное молоко с насыщенным вкусом. Натуральный продукт без добавок." },
+  { id:3,  name:"Кефир 1% 950 г",                             type:"Кефир",   fat:"1%",   shelf:14, badge:null,         img:`${BASE}/2020/03/IMG_5339-300x300.jpg`,  desc:"Лёгкий кефир на живых заквасках. Нормализует пищеварение, богат пробиотиками." },
+  { id:4,  name:"Кефир 2,5% 1 л",                             type:"Кефир",   fat:"2,5%", shelf:14, badge:null,         img:`${BASE}/2020/03/IMG_5368-300x300.jpg`,  desc:"Классический кефир средней жирности. Кисломолочный продукт с нежным вкусом." },
+  { id:5,  name:"Кефир 3,2% 1 л",                             type:"Кефир",   fat:"3,2%", shelf:14, badge:"Популярный", img:`${BASE}/2025/12/IMG_5475-300x300.jpg`,  desc:"Насыщенный кефир из цельного молока. Бодрит и питает — с утра и на ночь." },
+  { id:6,  name:"Йогурт питьевой Клубника 1,5% 1 л",          type:"Йогурт",  fat:"1,5%", shelf:21, badge:"Новинка",    img:`${BASE}/2021/02/IMG_5275-300x300.jpg`,  desc:"Питьевой йогурт с натуральным клубничным вкусом. Без консервантов, для детей и взрослых." },
+  { id:7,  name:"Йогурт питьевой Персик 1,5% 1 л",            type:"Йогурт",  fat:"1,5%", shelf:21, badge:null,         img:`${BASE}/2021/02/IMG_5305-300x300.jpg`,  desc:"Освежающий питьевой йогурт с персиком. Лёгкий и вкусный в любое время дня." },
+  { id:8,  name:"Сметана 20% 250 г",                          type:"Сметана", fat:"20%",  shelf:21, badge:null,         img:`${BASE}/2020/03/IMG_5339-300x300.jpg`,  desc:"Густая натуральная сметана. Идеальна для заправки салатов, борща и выпечки." },
+  { id:9,  name:"Сметана 20% 400 г",                          type:"Сметана", fat:"20%",  shelf:21, badge:"Выгодно",    img:`${BASE}/2020/03/IMG_5339-300x300.jpg`,  desc:"Та же домашняя сметана — в большой упаковке для семьи. Ложка стоит!" },
+  { id:10, name:"Сливочное масло 82,5%",                      type:"Масло",   fat:"82,5%",shelf:30, badge:"Фермерское", img:`${BASE}/2020/03/IMG_5368-300x300.jpg`,  desc:"Настоящее сливочное масло высшей жирности. Только сливки — никаких растительных жиров." },
+  { id:11, name:"Сыр Осетинский 45% 400 г",                   type:"Сыр",     fat:"45%",  shelf:30, badge:null,         img:`${BASE}/2025/12/IMG_5820-300x300.jpg`,  desc:"Традиционный осетинский сыр. Мягкий, немного солёный — настоящий кавказский вкус." },
+  { id:12, name:"Сыр Сулугуни 45% 400 г",                     type:"Сыр",     fat:"45%",  shelf:30, badge:"Хит",        img:`${BASE}/2020/03/IMG_5730-300x300.jpg`,  desc:"Классический сулугуни с упругой текстурой. Плавится, жарится, тянется — как надо." },
+  { id:13, name:"Сырок творожный глазированный Ваниль",        type:"Сырок",   fat:"23%",  shelf:21, badge:null,         img:`${BASE}/2025/12/IMG_6284-300x300.jpg`,  desc:"Нежный творожный сырок в шоколадной глазури с ванильным ароматом." },
+  { id:14, name:"Сырок творожный глазированный Вишня",         type:"Сырок",   fat:"23%",  shelf:21, badge:null,         img:`${BASE}/2025/12/IMG_6301-300x300.jpg`,  desc:"Творожный сырок с кисло-сладкой вишнёвой начинкой в шоколадной глазури." },
+  { id:15, name:"Сырок творожный глазированный Варёная сгущёнка",type:"Сырок", fat:"23%",  shelf:21, badge:"Любимый",   img:`${BASE}/2025/12/IMG_6316-300x300.jpg`,  desc:"Сырок с тягучей начинкой из варёной сгущёнки. Любимый вкус детства." },
+  { id:16, name:"Сырок творожный глазированный Клубника",      type:"Сырок",   fat:"23%",  shelf:21, badge:null,         img:`${BASE}/2025/12/IMG_6355-300x300.jpg`,  desc:"Творожный сырок с клубничной начинкой. Сладко, свежо и натурально." },
 ];
 
-const TYPES = ["Все","Молоко","Кефир","Сметана","Творог","Масло"];
+const TYPES = ["Все","Молоко","Кефир","Йогурт","Сметана","Масло","Сыр","Сырок"];
 const SHELF_OPTIONS = ["Все","до 7 дней","до 14 дней","более 14 дней"];
 
 type Section = "home"|"catalog"|"about"|"contacts";
@@ -169,7 +178,7 @@ export default function Index() {
         <div className="marquee-track">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-8 pr-8">
-              {["🥛 Свежее молоко","🐄 Горные пастбища","🌿 Без консервантов","🏔️ Дагестан","☀️ Каждый день","🧈 Натуральное масло","🥄 Домашняя сметана","✅ Халяль"].map((t,j) => (
+              {["🥛 Молоко 2,5% и 3,2%","🧀 Сыр Сулугуни","🐄 Горные пастбища","🥄 Сметана 20%","✅ Халяль","🫙 Кефир 1–3,2%","🧈 Масло 82,5%","🍓 Йогурт питьевой","🏔️ Дагестан","🍫 Сырки глазированные"].map((t,j) => (
                 <span key={j} className="text-white font-bold uppercase tracking-widest whitespace-nowrap text-sm px-4"
                   style={{fontFamily:"Oswald, sans-serif"}}>
                   {t}
@@ -226,18 +235,17 @@ export default function Index() {
             {products.slice(0,3).map(p => (
               <div key={p.id} className="card-hover rounded-3xl overflow-hidden cursor-pointer"
                 style={{background:"white", border:`2px solid ${T.sand}`}} onClick={() => go("catalog")}>
-                <div className="h-36 flex items-center justify-center text-7xl pattern-sky"
-                  style={{background:`linear-gradient(135deg,${T.sky}15,${T.sky}08)`}}>
-                  {p.emoji}
+                <div className="h-48 overflow-hidden relative">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-contain bg-white p-4" />
+                  {p.badge && <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide"
+                    style={{background:T.terra, color:"white"}}>{p.badge}</span>}
                 </div>
                 <div className="p-5">
-                  {p.badge && <span className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 uppercase tracking-wide"
-                    style={{background:T.terra, color:"white"}}>{p.badge}</span>}
-                  <h3 className="text-xl font-bold mb-1" style={{color:T.dark, fontFamily:"Oswald, sans-serif"}}>{p.name}</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{color:T.dark, fontFamily:"Oswald, sans-serif"}}>{p.name}</h3>
                   <p className="text-sm mb-4" style={{color:"#6b4e2e", opacity:0.85}}>{p.desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-black" style={{color:T.terra, fontFamily:"Oswald, sans-serif"}}>{p.price} ₽</span>
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:T.sand, color:"#6b4e2e"}}>жир {p.fat}</span>
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:T.sand, color:"#6b4e2e"}}>жирность {p.fat}</span>
+                    <span className="text-xs font-semibold" style={{color:T.terra}}>📅 {p.shelf} дн.</span>
                   </div>
                 </div>
               </div>
@@ -359,30 +367,30 @@ export default function Index() {
                 transform: shown ? "translateY(0)" : "translateY(24px)",
                 transition: `opacity 0.5s ease ${i*0.07}s, transform 0.5s ease ${i*0.07}s`,
               }}>
-              <div className="h-32 flex items-center justify-center text-6xl relative"
-                style={{background:`linear-gradient(135deg,${T.terra}12,${T.sky}10)`}}>
-                {p.emoji}
+              <div className="relative overflow-hidden" style={{height:180, background:"#fafafa"}}>
+                <img src={p.img} alt={p.name} className="w-full h-full object-contain p-3" />
                 {p.badge && (
                   <span className="absolute top-3 left-3 px-2 py-0.5 rounded-full text-xs font-bold uppercase"
                     style={{background:T.terra, color:"white"}}>
                     {p.badge}
                   </span>
                 )}
+                <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold"
+                  style={{background:T.sand, color:"#6b4e2e"}}>
+                  {p.type}
+                </span>
               </div>
               <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-base mb-1 leading-tight" style={{color:T.dark, fontFamily:"Oswald, sans-serif", fontSize:17}}>{p.name}</h3>
+                <h3 className="font-bold leading-tight mb-2" style={{color:T.dark, fontFamily:"Oswald, sans-serif", fontSize:16}}>{p.name}</h3>
                 <p className="text-xs leading-relaxed flex-1 mb-3" style={{color:"#7a5a3a"}}>{p.desc}</p>
-                <div className="flex items-center gap-2 text-xs mb-3" style={{color:"#9a7a5a"}}>
+                <div className="flex items-center gap-3 text-xs mb-4" style={{color:"#9a7a5a"}}>
                   <span>🧈 {p.fat}</span><span>·</span><span>📅 {p.shelf} дн.</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xl font-black" style={{color:T.terra, fontFamily:"Oswald, sans-serif"}}>{p.price} ₽</span>
-                  <button onClick={() => go("contacts")}
-                    className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide transition-all hover:scale-105"
-                    style={{background:T.terra, color:"white"}}>
-                    Заказать
-                  </button>
-                </div>
+                <button onClick={() => go("contacts")}
+                  className="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide transition-all hover:scale-105 hover:shadow-md"
+                  style={{background:`linear-gradient(135deg,${T.terra},${T.terraLight})`, color:"white"}}>
+                  Узнать цену и заказать
+                </button>
               </div>
             </div>
           ))}
