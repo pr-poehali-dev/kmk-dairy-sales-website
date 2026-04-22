@@ -366,6 +366,7 @@ export default function Index() {
       {activeSection === "catalog" && (
         <div className="max-w-6xl mx-auto px-4 pt-28 pb-16">
           <div className="text-center mb-10">
+            <img src={LOGO_IMG} alt="КуМК" className="h-16 w-auto object-contain mx-auto mb-4" />
             <h2 className="text-4xl md:text-5xl font-bold mb-2" style={{ color: "#2d6a3f", fontFamily: "Cormorant, serif" }}>
               Каталог продукции
             </h2>
@@ -516,7 +517,7 @@ export default function Index() {
               style={{ backgroundImage: `url(${MEADOW_IMG})`, backgroundSize: "cover", backgroundPosition: "center" }}
             />
             <div className="relative z-10 text-center px-6">
-              <div className="text-6xl mb-4">🐄</div>
+              <img src={LOGO_IMG} alt="КуМК" className="h-16 w-auto object-contain mx-auto mb-4" style={{ filter: "brightness(0) invert(1)" }} />
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: "Cormorant, serif" }}>
                 О продукции КуМК
               </h2>
@@ -598,7 +599,7 @@ export default function Index() {
       {activeSection === "contacts" && (
         <div className="pt-24 pb-16 max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <div className="text-5xl mb-4">📞</div>
+            <img src={LOGO_IMG} alt="КуМК" className="h-16 w-auto object-contain mx-auto mb-4" />
             <h2 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: "#2d6a3f", fontFamily: "Cormorant, serif" }}>
               Контакты
             </h2>
