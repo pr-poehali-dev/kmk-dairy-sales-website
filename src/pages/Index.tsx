@@ -53,7 +53,8 @@ export default function Index() {
 
   const filtered = products.filter(p => {
     const byType  = filterType === "Все" || p.type === filterType;
-    const byPrice = p.price <= priceMax;
+    const byPrice = true;
+    void byPrice; void priceMax;
     const byShelf = shelfFilter === "Все" ? true
       : shelfFilter === "до 7 дней"    ? p.shelf <= 7
       : shelfFilter === "до 14 дней"   ? p.shelf <= 14
@@ -316,17 +317,6 @@ export default function Index() {
                   {t}
                 </button>
               ))}
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest mb-3" style={{color:T.terra}}>
-              Цена до {priceMax} ₽
-            </label>
-            <input type="range" min={50} max={300} value={priceMax}
-              onChange={e => setPriceMax(Number(e.target.value))}
-              className="w-full cursor-pointer" style={{accentColor:T.terra}} />
-            <div className="flex justify-between text-xs mt-1" style={{color:"#9a7a5a"}}>
-              <span>50 ₽</span><span>300 ₽</span>
             </div>
           </div>
           <div>
