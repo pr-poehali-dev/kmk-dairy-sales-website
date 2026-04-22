@@ -4,42 +4,37 @@
 
 @layer base {
   :root {
-    --background: 45 40% 97%;
-    --foreground: 30 25% 15%;
-
+    --background: 30 20% 97%;
+    --foreground: 20 30% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 30 25% 15%;
-
+    --card-foreground: 20 30% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 30 25% 15%;
-
-    --primary: 142 45% 32%;
+    --popover-foreground: 20 30% 10%;
+    --primary: 16 72% 45%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 45 60% 92%;
-    --secondary-foreground: 30 25% 15%;
-
-    --muted: 45 30% 93%;
-    --muted-foreground: 30 15% 45%;
-
-    --accent: 38 85% 55%;
+    --secondary: 38 60% 92%;
+    --secondary-foreground: 20 30% 10%;
+    --muted: 30 20% 93%;
+    --muted-foreground: 20 15% 45%;
+    --accent: 200 55% 30%;
     --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 16 72% 45%;
+    --radius: 0.75rem;
 
-    --border: 45 25% 85%;
-    --input: 45 25% 85%;
-    --ring: 142 45% 32%;
-
-    --radius: 1rem;
-
-    /* Custom KuMK vars */
-    --green: #2d6a3f;
-    --green-light: #4a9c5f;
-    --cream: #fdf8ed;
-    --gold: #e8a825;
-    --brown: #5c3d1e;
+    --terra: #c0522a;
+    --terra-dark: #8b3318;
+    --terra-light: #e07a55;
+    --ochre: #d4a017;
+    --sky: #1e4d6b;
+    --sky-light: #2e7aaa;
+    --cream: #fdf6ee;
+    --milk: #fffbf5;
+    --dark: #1a1208;
+    --sand: #e8d5b0;
   }
 }
 
@@ -47,146 +42,144 @@
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
-    font-family: "Golos Text", sans-serif;
-    background-color: #fdf8ed;
+    background-color: var(--cream);
+    color: var(--dark);
+    font-family: "Rubik", sans-serif;
   }
-
   h1,
   h2,
-  h3 {
-    font-family: "Cormorant", serif;
+  h3,
+  h4 {
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 0.02em;
   }
 }
 
-/* Animations */
-@keyframes fadeInUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-@keyframes grassWave {
-  0%,
-  100% {
-    transform: skewX(0deg);
-  }
-  50% {
-    transform: skewX(2deg);
-  }
+.anim-up {
+  animation: fadeUp 0.7s ease-out both;
+}
+.anim-fade {
+  animation: fadeIn 0.8s ease-out both;
+}
+.anim-float {
+  animation: float 5s ease-in-out infinite;
 }
 
-@keyframes milkDrop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out forwards;
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-milk-drop {
-  animation: milkDrop 3s ease-in-out infinite;
-}
-
-.delay-100 {
+.delay-1 {
   animation-delay: 0.1s;
 }
-.delay-200 {
+.delay-2 {
   animation-delay: 0.2s;
 }
-.delay-300 {
+.delay-3 {
   animation-delay: 0.3s;
 }
-.delay-400 {
+.delay-4 {
   animation-delay: 0.4s;
 }
-.delay-500 {
+.delay-5 {
   animation-delay: 0.5s;
 }
+.delay-6 {
+  animation-delay: 0.6s;
+}
 
-/* Grass border decoration */
-.grass-border {
-  position: relative;
+.marquee-wrap {
   overflow: hidden;
 }
-
-.grass-border::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath d='M0,40 L0,20 Q30,0 60,20 Q90,40 120,20 Q150,0 180,20 Q210,40 240,20 Q270,0 300,20 Q330,40 360,20 Q390,0 420,20 Q450,40 480,20 Q510,0 540,20 Q570,40 600,20 Q630,0 660,20 Q690,40 720,20 Q750,0 780,20 Q810,40 840,20 Q870,0 900,20 Q930,40 960,20 Q990,0 1020,20 Q1050,40 1080,20 Q1110,0 1140,20 Q1170,40 1200,20 Q1230,0 1260,20 Q1290,40 1320,20 Q1350,0 1380,20 Q1410,40 1440,20 L1440,40 Z' fill='%23fdf8ed'/%3E%3C/svg%3E")
-    no-repeat bottom;
-  background-size: cover;
-  z-index: 2;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
-/* Product card hover */
-.product-card {
+.pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c0522a' fill-opacity='0.07'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.pattern-sky {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231e4d6b' fill-opacity='0.06'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z M30 10 L50 30 L30 50 L10 30 Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.card-hover {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
 }
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(45, 106, 63, 0.15);
+.card-hover:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 28px 56px rgba(192, 82, 42, 0.18);
 }
 
-/* Nav link active/hover */
-.nav-link {
+.nav-pill {
   position: relative;
-  transition: color 0.3s;
+  transition: color 0.25s;
 }
-
-.nav-link::after {
+.nav-pill::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  bottom: -3px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--gold);
+  height: 2.5px;
+  background: var(--ochre);
   transition: width 0.3s ease;
 }
-
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-pill:hover::after,
+.nav-pill.active::after {
   width: 100%;
 }
 
-/* Scroll smooth */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--terra);
+  border-radius: 4px;
+}
+
 html {
   scroll-behavior: smooth;
 }
