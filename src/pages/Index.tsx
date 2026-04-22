@@ -132,13 +132,13 @@ export default function Index() {
             </div>
           </div>
 
-          <h1 className={`anim-up delay-1 ${shown?"":"opacity-0"} text-6xl md:text-8xl font-bold leading-none mb-2`}
+          <h1 className={`anim-up delay-1 ${shown?"":"opacity-0"} text-5xl md:text-7xl font-bold leading-none mb-2`}
             style={{color:"white", fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
-            Молоко
+            Качество от фермы
           </h1>
-          <h1 className={`anim-up delay-2 ${shown?"":"opacity-0"} text-6xl md:text-8xl font-bold leading-none mb-6`}
+          <h1 className={`anim-up delay-2 ${shown?"":"opacity-0"} text-5xl md:text-7xl font-bold leading-none mb-6`}
             style={{color:T.terra, fontFamily:"Oswald, sans-serif", textTransform:"uppercase", WebkitTextStroke:`1px ${T.terraLight}`}}>
-            как у мамы
+            до прилавка
           </h1>
 
           <p className={`anim-up delay-3 ${shown?"":"opacity-0"} text-lg md:text-xl max-w-lg mb-8 leading-relaxed`}
