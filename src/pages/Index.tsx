@@ -32,9 +32,20 @@ const SHELF_OPTIONS = ["Все","до 7 дней","до 14 дней","более
 
 type Section = "home"|"catalog"|"about"|"contacts";
 
-const T = { terra:"#c0522a", terraDark:"#8b3318", terraLight:"#e07a55",
-            ochre:"#d4a017", sky:"#1e4d6b", skyLight:"#2e7aaa",
-            cream:"#fdf6ee", milk:"#fffbf5", dark:"#1a1208", sand:"#e8d5b0" };
+const T = {
+  dark:    "#142a1a",
+  mid:     "#2e7d3e",
+  bright:  "#3d9e50",
+  lime:    "#7ec850",
+  light:   "#e8f5eb",
+  pale:    "#f2faf4",
+  white:   "#ffffff",
+  gray:    "#5a7060",
+  border:  "#c8e6cc",
+  // акценты
+  accent:  "#1e5c2e",
+  gold:    "#f0c040",
+};
 
 /* ─── Компонент ─── */
 export default function Index() {
@@ -73,7 +84,7 @@ export default function Index() {
 
   /* ─── NAVBAR ─── */
   const Navbar = () => (
-    <nav className="fixed top-0 left-0 right-0 z-50" style={{background:"rgba(253,246,238,0.96)", backdropFilter:"blur(12px)", borderBottom:`2px solid ${T.sand}`}}>
+    <nav className="fixed top-0 left-0 right-0 z-50" style={{background:"rgba(242,250,244,0.96)", backdropFilter:"blur(12px)", borderBottom:`2px solid ${T.light}`}}>
       <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
         <button onClick={() => go("home")}>
           <img src={LOGO_IMG} alt="КуМК" className="h-12 w-auto object-contain" style={{maxWidth:130}} />
@@ -83,28 +94,28 @@ export default function Index() {
           {nav.map(n => (
             <button key={n.id} onClick={() => go(n.id)}
               className={`nav-pill text-sm font-semibold uppercase tracking-wider ${section===n.id?"active":""}`}
-              style={{color: section===n.id ? T.terra : T.dark, fontFamily:"Oswald, sans-serif", fontSize:15}}>
+              style={{color: section===n.id ? T.mid : T.dark, fontFamily:"Oswald, sans-serif", fontSize:15}}>
               {n.label}
             </button>
           ))}
           <button onClick={() => go("contacts")}
             className="px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all hover:shadow-lg hover:scale-105"
-            style={{background:`linear-gradient(135deg,${T.terra},${T.terraLight})`, color:"white", fontFamily:"Oswald, sans-serif"}}>
+            style={{background:`linear-gradient(135deg,${T.mid},${T.bright})`, color:"white", fontFamily:"Oswald, sans-serif"}}>
             Заказать
           </button>
         </div>
 
-        <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} style={{color:T.terra}}>
+        <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} style={{color:T.mid}}>
           <Icon name={menuOpen ? "X" : "Menu"} size={26} />
         </button>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden px-5 pb-5 flex flex-col gap-1" style={{background:T.cream, borderTop:`1px solid ${T.sand}`}}>
+        <div className="md:hidden px-5 pb-5 flex flex-col gap-1" style={{background:T.pale, borderTop:`1px solid ${T.light}`}}>
           {nav.map(n => (
             <button key={n.id} onClick={() => go(n.id)}
               className="py-3 text-left font-bold uppercase tracking-wider border-b text-base"
-              style={{color:T.terra, borderColor:T.sand, fontFamily:"Oswald, sans-serif"}}>
+              style={{color:T.mid, borderColor:T.light, fontFamily:"Oswald, sans-serif"}}>
               {n.label}
             </button>
           ))}
@@ -119,15 +130,15 @@ export default function Index() {
       {/* HERO */}
       <section className="relative min-h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage:`url(${IMG_MOUNTAINS})`}} />
-        <div className="absolute inset-0" style={{background:"linear-gradient(to top, rgba(26,18,8,0.92) 0%, rgba(26,18,8,0.4) 50%, rgba(26,18,8,0.1) 100%)"}} />
+        <div className="absolute inset-0" style={{background:"linear-gradient(to top, rgba(20,42,26,0.88) 0%, rgba(20,42,26,0.35) 50%, rgba(20,42,26,0.08) 100%)"}} />
 
         {/* Декоративная лента сверху */}
-        <div className="absolute top-0 left-0 right-0 h-1.5" style={{background:`linear-gradient(90deg,${T.terra},${T.ochre},${T.sky},${T.terra})`}} />
+        <div className="absolute top-0 left-0 right-0 h-1.5" style={{background:`linear-gradient(90deg,${T.mid},${T.lime},${T.accent},${T.mid})`}} />
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-16 pt-32">
           <div className={`anim-up ${shown?"":"opacity-0"}`}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-semibold"
-              style={{background:"rgba(212,160,23,0.2)", border:`1px solid ${T.ochre}`, color:T.ochre}}>
+              style={{background:"rgba(126,200,80,0.2)", border:`1px solid ${T.lime}`, color:T.lime}}>
               🏔️ Горный Дагестан · Натуральное · Халяль
             </div>
           </div>
@@ -137,24 +148,24 @@ export default function Index() {
             Качество от фермы
           </h1>
           <h1 className={`anim-up delay-2 ${shown?"":"opacity-0"} text-5xl md:text-7xl font-bold leading-none mb-6`}
-            style={{color:T.terra, fontFamily:"Oswald, sans-serif", textTransform:"uppercase", WebkitTextStroke:`1px ${T.terraLight}`}}>
+            style={{color:T.mid, fontFamily:"Oswald, sans-serif", textTransform:"uppercase", WebkitTextStroke:`1px ${T.bright}`}}>
             до прилавка
           </h1>
 
           <p className={`anim-up delay-3 ${shown?"":"opacity-0"} text-lg md:text-xl max-w-lg mb-8 leading-relaxed`}
             style={{color:"rgba(255,255,255,0.82)"}}>
-            Торговая марка <strong style={{color:T.ochre}}>КуМК</strong> — молочная продукция с горных пастбищ Дагестана. Без консервантов. Без химии. Только то, что создала природа.
+            Торговая марка <strong style={{color:T.lime}}>КуМК</strong> — молочная продукция с горных пастбищ Дагестана. Без консервантов. Без химии. Только то, что создала природа.
           </p>
 
           <div className={`anim-up delay-4 ${shown?"":"opacity-0"} flex flex-wrap gap-4`}>
             <button onClick={() => go("catalog")}
               className="px-8 py-4 rounded-full font-bold uppercase tracking-wider text-base transition-all hover:scale-105 hover:shadow-2xl"
-              style={{background:`linear-gradient(135deg,${T.terra},${T.terraLight})`, color:"white", fontFamily:"Oswald, sans-serif"}}>
+              style={{background:`linear-gradient(135deg,${T.mid},${T.bright})`, color:"white", fontFamily:"Oswald, sans-serif"}}>
               Смотреть каталог
             </button>
             <button onClick={() => go("contacts")}
               className="px-8 py-4 rounded-full font-bold uppercase tracking-wider text-base border-2 transition-all hover:bg-white"
-              style={{borderColor:T.ochre, color:T.ochre, fontFamily:"Oswald, sans-serif"}}>
+              style={{borderColor:T.lime, color:T.lime, fontFamily:"Oswald, sans-serif"}}>
               Оформить заказ
             </button>
           </div>
@@ -169,13 +180,13 @@ export default function Index() {
         {/* Нижняя волна */}
         <div className="absolute bottom-0 left-0 right-0" style={{height:50, zIndex:3}}>
           <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style={{width:"100%",height:"100%"}}>
-            <path d="M0,50 L0,25 Q180,0 360,25 Q540,50 720,25 Q900,0 1080,25 Q1260,50 1440,25 L1440,50 Z" fill={T.cream}/>
+            <path d="M0,50 L0,25 Q180,0 360,25 Q540,50 720,25 Q900,0 1080,25 Q1260,50 1440,25 L1440,50 Z" fill={T.pale}/>
           </svg>
         </div>
       </section>
 
       {/* БЕГУЩАЯ СТРОКА */}
-      <div className="py-4 overflow-hidden" style={{background:T.terra}}>
+      <div className="py-4 overflow-hidden" style={{background:T.mid}}>
         <div className="marquee-track">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-8 pr-8">
@@ -194,21 +205,21 @@ export default function Index() {
       <section className="py-20 max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="text-sm font-bold uppercase tracking-widest mb-3" style={{color:T.terra}}>— Наша история</div>
+            <div className="text-sm font-bold uppercase tracking-widest mb-3" style={{color:T.mid}}>— Наша история</div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight" style={{color:T.dark, fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
-              С горы — <span style={{color:T.terra}}>прямо к вам</span>
+              С горы — <span style={{color:T.mid}}>прямо к вам</span>
             </h2>
-            <p className="text-base leading-relaxed mb-4" style={{color:"#4a3a28"}}>
+            <p className="text-base leading-relaxed mb-4" style={{color:T.gray}}>
               ИП Магомедов Арсен Алиевич начал с небольшой фермы в Дагестане. Сегодня торговая марка <strong>КуМК</strong> — это 15 лет доверия, сотни постоянных покупателей и молоко, которое пахнет горным воздухом.
             </p>
-            <p className="text-base leading-relaxed mb-8" style={{color:"#4a3a28"}}>
+            <p className="text-base leading-relaxed mb-8" style={{color:T.gray}}>
               Наши коровы пасутся на высотных лугах. Никаких антибиотиков, никаких гормонов роста — только трава, вода и солнце.
             </p>
             <div className="grid grid-cols-3 gap-4">
               {[["15", "лет на рынке"],["100%","натуральное"],["0","консервантов"]].map(([v,l],i) => (
-                <div key={i} className="text-center p-4 rounded-2xl" style={{background:T.sand}}>
-                  <div className="text-3xl font-black" style={{color:T.terra, fontFamily:"Oswald, sans-serif"}}>{v}</div>
-                  <div className="text-xs mt-1 uppercase tracking-wide font-semibold" style={{color:"#6b4e2e"}}>{l}</div>
+                <div key={i} className="text-center p-4 rounded-2xl" style={{background:T.light}}>
+                  <div className="text-3xl font-black" style={{color:T.mid, fontFamily:"Oswald, sans-serif"}}>{v}</div>
+                  <div className="text-xs mt-1 uppercase tracking-wide font-semibold" style={{color:T.gray}}>{l}</div>
                 </div>
               ))}
             </div>
@@ -216,7 +227,7 @@ export default function Index() {
           <div className="relative">
             <img src={IMG_COW} alt="Наши коровы" className="w-full rounded-3xl object-cover shadow-2xl" style={{height:400}} />
             <div className="absolute -bottom-4 -left-4 px-5 py-3 rounded-2xl font-bold text-white shadow-xl"
-              style={{background:`linear-gradient(135deg,${T.terra},${T.terraLight})`, fontFamily:"Oswald, sans-serif", fontSize:16}}>
+              style={{background:`linear-gradient(135deg,${T.mid},${T.bright})`, fontFamily:"Oswald, sans-serif", fontSize:16}}>
               🏔️ Горный Дагестан
             </div>
           </div>
@@ -224,29 +235,29 @@ export default function Index() {
       </section>
 
       {/* ТОП ПРОДУКТЫ */}
-      <section className="py-16 pattern-bg" style={{background:T.milk}}>
+      <section className="py-16 pattern-bg" style={{background:T.pale}}>
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.terra}}>— Каталог</div>
+            <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.mid}}>— Каталог</div>
             <h2 className="text-4xl md:text-5xl font-bold" style={{color:T.dark, fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
-              Популярные <span style={{color:T.terra}}>продукты</span>
+              Популярные <span style={{color:T.mid}}>продукты</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {products.slice(0,3).map(p => (
               <div key={p.id} className="card-hover rounded-3xl overflow-hidden cursor-pointer"
-                style={{background:"white", border:`2px solid ${T.sand}`}} onClick={() => go("catalog")}>
+                style={{background:"white", border:`2px solid ${T.light}`}} onClick={() => go("catalog")}>
                 <div className="h-48 overflow-hidden relative">
                   <img src={p.img} alt={p.name} className="w-full h-full object-contain bg-white p-4" />
                   {p.badge && <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide"
-                    style={{background:T.terra, color:"white"}}>{p.badge}</span>}
+                    style={{background:T.mid, color:"white"}}>{p.badge}</span>}
                 </div>
                 <div className="p-5">
                   <h3 className="text-lg font-bold mb-2" style={{color:T.dark, fontFamily:"Oswald, sans-serif"}}>{p.name}</h3>
-                  <p className="text-sm mb-4" style={{color:"#6b4e2e", opacity:0.85}}>{p.desc}</p>
+                  <p className="text-sm mb-4" style={{color:T.gray, opacity:0.85}}>{p.desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:T.sand, color:"#6b4e2e"}}>жирность {p.fat}</span>
-                    <span className="text-xs font-semibold" style={{color:T.terra}}>📅 {p.shelf} дн.</span>
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{background:T.light, color:T.gray}}>жирность {p.fat}</span>
+                    <span className="text-xs font-semibold" style={{color:T.mid}}>📅 {p.shelf} дн.</span>
                   </div>
                 </div>
               </div>
@@ -255,7 +266,7 @@ export default function Index() {
           <div className="text-center">
             <button onClick={() => go("catalog")}
               className="px-10 py-4 rounded-full font-bold uppercase tracking-widest border-2 transition-all hover:shadow-lg hover:scale-105"
-              style={{borderColor:T.terra, color:T.terra, fontFamily:"Oswald, sans-serif"}}>
+              style={{borderColor:T.mid, color:T.mid, fontFamily:"Oswald, sans-serif"}}>
               Весь каталог →
             </button>
           </div>
@@ -265,10 +276,10 @@ export default function Index() {
       {/* БАННЕР ЗАКАЗА */}
       <section className="relative overflow-hidden py-20 mx-4 md:mx-6 my-12 rounded-3xl">
         <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage:`url(${IMG_PRODUCTS})`}} />
-        <div className="absolute inset-0" style={{background:`linear-gradient(135deg, rgba(139,51,24,0.93) 0%, rgba(26,77,107,0.88) 100%)`}} />
+        <div className="absolute inset-0" style={{background:`linear-gradient(135deg, rgba(30,92,46,0.93) 0%, rgba(20,42,26,0.92) 100%)`}} />
         <div className="absolute inset-0 pattern-bg opacity-30" />
         {/* Полосатая рамка в стиле дагестанского ковра */}
-        <div className="absolute inset-0 rounded-3xl" style={{boxShadow:`inset 0 0 0 6px rgba(212,160,23,0.5), inset 0 0 0 12px rgba(255,255,255,0.05)`}} />
+        <div className="absolute inset-0 rounded-3xl" style={{boxShadow:`inset 0 0 0 6px rgba(126,200,80,0.5), inset 0 0 0 12px rgba(255,255,255,0.05)`}} />
 
         <div className="relative z-10 text-center px-6">
           <img src={LOGO_IMG} alt="КуМК" className="h-16 w-auto mx-auto mb-6 object-contain" style={{filter:"brightness(0) invert(1)"}} />
@@ -280,7 +291,7 @@ export default function Index() {
           </p>
           <button onClick={() => go("contacts")}
             className="px-10 py-4 rounded-full font-bold uppercase tracking-widest text-lg transition-all hover:scale-105 hover:shadow-2xl"
-            style={{background:T.ochre, color:T.dark, fontFamily:"Oswald, sans-serif"}}>
+            style={{background:T.gold, color:T.dark, fontFamily:"Oswald, sans-serif"}}>
             Оформить заказ
           </button>
         </div>
@@ -293,18 +304,18 @@ export default function Index() {
     <div className="max-w-6xl mx-auto px-4 pt-28 pb-16">
       <div className={`text-center mb-10 anim-up ${shown?"":"opacity-0"}`}>
         <img src={LOGO_IMG} alt="КуМК" className="h-14 w-auto mx-auto mb-5 object-contain" />
-        <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.terra}}>— Вся продукция</div>
+        <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.mid}}>— Вся продукция</div>
         <h2 className="text-4xl md:text-5xl font-bold" style={{color:T.dark, fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
-          Каталог <span style={{color:T.terra}}>КуМК</span>
+          Каталог <span style={{color:T.mid}}>КуМК</span>
         </h2>
       </div>
 
       {/* Фильтры */}
       <div className={`rounded-3xl p-6 mb-8 anim-up delay-2 ${shown?"":"opacity-0"}`}
-        style={{background:"white", border:`2px solid ${T.sand}`}}>
+        style={{background:"white", border:`2px solid ${T.light}`}}>
         <div className="grid md:grid-cols-3 gap-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest mb-3" style={{color:T.terra}}>
+            <label className="block text-xs font-bold uppercase tracking-widest mb-3" style={{color:T.mid}}>
               Тип продукта
             </label>
             <div className="flex flex-wrap gap-2">
@@ -312,15 +323,15 @@ export default function Index() {
                 <button key={t} onClick={() => setFilterType(t)}
                   className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all"
                   style={filterType===t
-                    ? {background:T.terra, color:"white"}
-                    : {background:T.sand, color:"#6b4e2e"}}>
+                    ? {background:T.mid, color:"white"}
+                    : {background:T.light, color:T.gray}}>
                   {t}
                 </button>
               ))}
             </div>
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase tracking-widest mb-3" style={{color:T.terra}}>
+            <label className="block text-xs font-bold uppercase tracking-widest mb-3" style={{color:T.mid}}>
               Срок хранения
             </label>
             <div className="flex flex-wrap gap-2">
@@ -328,8 +339,8 @@ export default function Index() {
                 <button key={s} onClick={() => setShelfFilter(s)}
                   className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
                   style={shelfFilter===s
-                    ? {background:T.sky, color:"white"}
-                    : {background:T.sand, color:"#6b4e2e"}}>
+                    ? {background:T.accent, color:"white"}
+                    : {background:T.light, color:T.gray}}>
                   {s}
                 </button>
               ))}
@@ -341,10 +352,10 @@ export default function Index() {
       {filtered.length === 0 ? (
         <div className="text-center py-24">
           <div className="text-7xl mb-4">🐄</div>
-          <p className="text-xl font-bold uppercase" style={{color:T.terra, fontFamily:"Oswald, sans-serif"}}>
+          <p className="text-xl font-bold uppercase" style={{color:T.mid, fontFamily:"Oswald, sans-serif"}}>
             Ничего не найдено
           </p>
-          <p className="mt-2 text-sm" style={{color:"#9a7a5a"}}>Попробуйте изменить фильтры</p>
+          <p className="mt-2 text-sm" style={{color:T.gray}}>Попробуйте изменить фильтры</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -352,33 +363,33 @@ export default function Index() {
             <div key={p.id} className="card-hover rounded-3xl flex flex-col overflow-hidden"
               style={{
                 background:"white",
-                border:`2px solid ${T.sand}`,
+                border:`2px solid ${T.light}`,
                 opacity: shown ? 1 : 0,
                 transform: shown ? "translateY(0)" : "translateY(24px)",
                 transition: `opacity 0.5s ease ${i*0.07}s, transform 0.5s ease ${i*0.07}s`,
               }}>
-              <div className="relative overflow-hidden" style={{height:180, background:"#fafafa"}}>
+              <div className="relative overflow-hidden" style={{height:180, background:T.pale}}>
                 <img src={p.img} alt={p.name} className="w-full h-full object-contain p-3" />
                 {p.badge && (
                   <span className="absolute top-3 left-3 px-2 py-0.5 rounded-full text-xs font-bold uppercase"
-                    style={{background:T.terra, color:"white"}}>
+                    style={{background:T.mid, color:"white"}}>
                     {p.badge}
                   </span>
                 )}
                 <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-semibold"
-                  style={{background:T.sand, color:"#6b4e2e"}}>
+                  style={{background:T.light, color:T.gray}}>
                   {p.type}
                 </span>
               </div>
               <div className="p-4 flex flex-col flex-1">
                 <h3 className="font-bold leading-tight mb-2" style={{color:T.dark, fontFamily:"Oswald, sans-serif", fontSize:16}}>{p.name}</h3>
-                <p className="text-xs leading-relaxed flex-1 mb-3" style={{color:"#7a5a3a"}}>{p.desc}</p>
-                <div className="flex items-center gap-3 text-xs mb-4" style={{color:"#9a7a5a"}}>
+                <p className="text-xs leading-relaxed flex-1 mb-3" style={{color:T.gray}}>{p.desc}</p>
+                <div className="flex items-center gap-3 text-xs mb-4" style={{color:T.gray}}>
                   <span>🧈 {p.fat}</span><span>·</span><span>📅 {p.shelf} дн.</span>
                 </div>
                 <button onClick={() => go("contacts")}
                   className="w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wide transition-all hover:scale-105 hover:shadow-md"
-                  style={{background:`linear-gradient(135deg,${T.terra},${T.terraLight})`, color:"white"}}>
+                  style={{background:T.mid, color:"white"}}>
                   Узнать цену и заказать
                 </button>
               </div>
@@ -395,13 +406,13 @@ export default function Index() {
       {/* Hero-баннер */}
       <div className="relative h-80 md:h-[480px] overflow-hidden">
         <img src={IMG_MOUNTAINS} alt="Дагестан" className="w-full h-full object-cover" />
-        <div className="absolute inset-0" style={{background:"linear-gradient(to bottom, rgba(26,18,8,0.3) 0%, rgba(26,18,8,0.8) 100%)"}} />
+        <div className="absolute inset-0" style={{background:"linear-gradient(to bottom, rgba(20,42,26,0.25) 0%, rgba(20,42,26,0.75) 100%)"}} />
         {/* Цветная полоса снизу */}
-        <div className="absolute bottom-0 left-0 right-0 h-1.5" style={{background:`linear-gradient(90deg,${T.terra},${T.ochre},${T.sky},${T.terra})`}} />
+        <div className="absolute bottom-0 left-0 right-0 h-1.5" style={{background:`linear-gradient(90deg,${T.mid},${T.lime},${T.accent},${T.mid})`}} />
         <div className={`absolute inset-0 flex flex-col items-center justify-end pb-12 px-6 text-center anim-up ${shown?"":"opacity-0"}`}>
           <img src={LOGO_IMG} alt="КуМК" className="h-14 w-auto mb-4 object-contain" style={{filter:"brightness(0) invert(1)"}} />
           <h2 className="text-4xl md:text-6xl font-bold text-white" style={{fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
-            О продукции <span style={{color:T.terra}}>КуМК</span>
+            О продукции <span style={{color:T.mid}}>КуМК</span>
           </h2>
           <p className="mt-3 text-lg max-w-lg" style={{color:"rgba(255,255,255,0.8)"}}>
             Натуральность — это не маркетинг. Это то, как мы работаем с первого дня.
@@ -420,10 +431,10 @@ export default function Index() {
             {icon:"✅", title:"Халяль",          text:"Всё производство соответствует нормам халяль. Это наш принцип и наша ответственность перед покупателями."},
             {icon:"👨‍👩‍👧", title:"Семья",        text:"ИП Магомедов Арсен Алиевич — семейный бизнес. 15 лет мы делаем то, что умеем лучше всего."},
           ].map((v,i) => (
-            <div key={i} className="rounded-3xl p-6 card-hover" style={{background:"white", border:`2px solid ${T.sand}`}}>
+            <div key={i} className="rounded-3xl p-6 card-hover" style={{background:"white", border:`2px solid ${T.light}`}}>
               <div className="text-4xl mb-3">{v.icon}</div>
-              <h3 className="text-xl font-bold mb-2 uppercase" style={{color:T.terra, fontFamily:"Oswald, sans-serif"}}>{v.title}</h3>
-              <p className="text-sm leading-relaxed" style={{color:"#6b4e2e"}}>{v.text}</p>
+              <h3 className="text-xl font-bold mb-2 uppercase" style={{color:T.mid, fontFamily:"Oswald, sans-serif"}}>{v.title}</h3>
+              <p className="text-sm leading-relaxed" style={{color:T.gray}}>{v.text}</p>
             </div>
           ))}
         </div>
@@ -432,9 +443,9 @@ export default function Index() {
         <div className="rounded-3xl overflow-hidden grid md:grid-cols-2 shadow-2xl">
           <img src={IMG_PRODUCTS} alt="Продукция КуМК" className="w-full h-64 md:h-auto object-cover" />
           <div className="p-8 md:p-12 flex flex-col justify-center pattern-bg"
-            style={{background:`linear-gradient(135deg,${T.terraDark},${T.sky})`}}>
+            style={{background:`linear-gradient(135deg,${T.accent},${T.mid})`}}>
             {/* Орнаментальная линия */}
-            <div className="h-1 w-16 mb-6 rounded-full" style={{background:T.ochre}} />
+            <div className="h-1 w-16 mb-6 rounded-full" style={{background:T.lime}} />
             <h3 className="text-3xl font-bold text-white mb-4 uppercase" style={{fontFamily:"Oswald, sans-serif"}}>
               История бренда
             </h3>
@@ -444,7 +455,7 @@ export default function Index() {
             <p className="text-white leading-relaxed" style={{opacity:0.88}}>
               Сегодня КуМК — это гордость региона и проверенное качество, которое передаётся из рук в руки.
             </p>
-            <div className="h-1 w-16 mt-6 rounded-full" style={{background:T.ochre}} />
+            <div className="h-1 w-16 mt-6 rounded-full" style={{background:T.lime}} />
           </div>
         </div>
       </div>
@@ -456,11 +467,11 @@ export default function Index() {
     <div className="pt-24 pb-16 max-w-4xl mx-auto px-6">
       <div className={`text-center mb-12 anim-up ${shown?"":"opacity-0"}`}>
         <img src={LOGO_IMG} alt="КуМК" className="h-14 w-auto mx-auto mb-5 object-contain" />
-        <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.terra}}>— Связаться с нами</div>
+        <div className="text-sm font-bold uppercase tracking-widest mb-2" style={{color:T.mid}}>— Связаться с нами</div>
         <h2 className="text-4xl md:text-5xl font-bold" style={{color:T.dark, fontFamily:"Oswald, sans-serif", textTransform:"uppercase"}}>
           Контакты
         </h2>
-        <p className="mt-3" style={{color:"#7a5a3a"}}>Оставьте заявку — мы перезвоним и всё расскажем</p>
+        <p className="mt-3" style={{color:T.gray}}>Оставьте заявку — мы перезвоним и всё расскажем</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -474,11 +485,11 @@ export default function Index() {
             {icon:"🕐", title:"Режим работы",    val:"Пн–Пт: 8:00–18:00"},
           ].map((c,i) => (
             <div key={i} className="flex items-center gap-4 rounded-2xl p-4"
-              style={{background:"white", border:`2px solid ${T.sand}`}}>
+              style={{background:"white", border:`2px solid ${T.light}`}}>
               <div className="w-11 h-11 rounded-xl flex items-center justify-center text-2xl flex-shrink-0"
-                style={{background:T.sand}}>{c.icon}</div>
+                style={{background:T.light}}>{c.icon}</div>
               <div>
-                <div className="text-xs font-bold uppercase tracking-widest" style={{color:T.terra}}>{c.title}</div>
+                <div className="text-xs font-bold uppercase tracking-widest" style={{color:T.mid}}>{c.title}</div>
                 <div className="font-semibold mt-0.5" style={{color:T.dark}}>{c.val}</div>
               </div>
             </div>
@@ -486,8 +497,8 @@ export default function Index() {
         </div>
 
         {/* Форма */}
-        <div className="rounded-3xl p-8 pattern-bg" style={{background:`linear-gradient(135deg,${T.terraDark},${T.sky})`, border:`2px solid ${T.terra}`}}>
-          <div className="h-1 w-12 mb-5 rounded-full" style={{background:T.ochre}} />
+        <div className="rounded-3xl p-8 pattern-bg" style={{background:`linear-gradient(135deg,${T.accent},${T.mid})`, border:`2px solid ${T.mid}`}}>
+          <div className="h-1 w-12 mb-5 rounded-full" style={{background:T.lime}} />
           <h3 className="text-2xl font-bold text-white mb-6 uppercase" style={{fontFamily:"Oswald, sans-serif"}}>
             Оставить заявку
           </h3>
@@ -510,7 +521,7 @@ export default function Index() {
                 style={{background:"rgba(255,255,255,0.12)", border:"1px solid rgba(255,255,255,0.2)", color:"white"}} />
             </div>
             <button className="w-full py-4 rounded-xl font-bold uppercase tracking-widest text-base transition-all hover:scale-[1.02] hover:shadow-xl"
-              style={{background:T.ochre, color:T.dark, fontFamily:"Oswald, sans-serif"}}>
+              style={{background:T.gold, color:T.dark, fontFamily:"Oswald, sans-serif"}}>
               Отправить заявку
             </button>
           </div>
@@ -521,8 +532,8 @@ export default function Index() {
 
   /* ─── FOOTER ─── */
   const Footer = () => (
-    <footer className="py-10" style={{background:T.terraDark}}>
-      <div className="h-1 mb-10" style={{background:`linear-gradient(90deg,${T.terra},${T.ochre},${T.sky},${T.terra})`}} />
+    <footer className="py-10" style={{background:T.accent}}>
+      <div className="h-1 mb-10" style={{background:`linear-gradient(90deg,${T.mid},${T.lime},${T.bright},${T.mid})`}} />
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <img src={LOGO_IMG} alt="КуМК" className="h-10 w-auto object-contain mb-2" style={{filter:"brightness(0) invert(1)"}} />
@@ -545,7 +556,7 @@ export default function Index() {
   );
 
   return (
-    <div style={{backgroundColor:T.cream, minHeight:"100vh"}}>
+    <div style={{backgroundColor:T.pale, minHeight:"100vh"}}>
       <Navbar />
       {section === "home"     && <Home />}
       {section === "catalog"  && <Catalog />}
