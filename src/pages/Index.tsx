@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const MEADOW_IMG = "https://cdn.poehali.dev/projects/5f76888b-15da-428a-92be-3ece21533d69/files/77abb560-86d7-4cb4-b93e-8650b6e3bbc3.jpg";
 const PRODUCTS_IMG = "https://cdn.poehali.dev/projects/5f76888b-15da-428a-92be-3ece21533d69/files/4ac272f2-2b6c-47eb-9158-98700a191569.jpg";
+const LOGO_IMG = "https://kumk.ru/wp-content/uploads/2021/02/logo-kumk-official.png";
 
 const products = [
   {
@@ -151,20 +152,12 @@ export default function Index() {
             onClick={() => setActiveSection("home")}
             className="flex items-center gap-2 group"
           >
-            <div
-              className="w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold shadow-md"
-              style={{ background: "linear-gradient(135deg, #2d6a3f, #4a9c5f)" }}
-            >
-              <span className="text-white text-sm font-black" style={{ fontFamily: "Cormorant, serif" }}>КМ</span>
-            </div>
-            <div className="leading-tight">
-              <div className="font-black text-base" style={{ color: "#2d6a3f", fontFamily: "Cormorant, serif", fontSize: "20px" }}>
-                КуМК
-              </div>
-              <div className="text-xs" style={{ color: "#5c3d1e", opacity: 0.7, marginTop: "-2px" }}>
-                натуральное молоко
-              </div>
-            </div>
+            <img
+              src={LOGO_IMG}
+              alt="КуМК"
+              className="h-12 w-auto object-contain"
+              style={{ maxWidth: "140px" }}
+            />
           </button>
 
           {/* Desktop nav */}
@@ -689,8 +682,13 @@ export default function Index() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div>
-              <div className="text-2xl font-black text-white" style={{ fontFamily: "Cormorant, serif" }}>КуМК</div>
-              <div className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <img
+                src={LOGO_IMG}
+                alt="КуМК"
+                className="h-10 w-auto object-contain mb-1"
+                style={{ maxWidth: "120px", filter: "brightness(0) invert(1)" }}
+              />
+              <div className="text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
                 ИП Магомедов Арсен Алиевич
               </div>
             </div>
